@@ -1,0 +1,80 @@
+Algoritmo sin_titulo
+	Definir frutas, tipo, num, lotes Como Entero
+	Definir peso, valor, bono, retencion, pago Como Real
+	Definir totalKg, totalDinero, mayorPeso Como Real
+	lotes = 0
+	totalKg = 0
+	totalDinero = 0
+	mayorPeso = 0
+	Repetir
+		Escribir "ESCOJA UNA DE LAS OPCIONES"
+		Escribir "1. REGISTRAR LOTE DE FRUTA"
+		Escribir "2. VER RESUMEN DEL CENTRO DE ACOPIO"
+		Escribir "3. SALIR DEL PROGRAMA"
+		Leer frutas
+		Si frutas = 1 Entonces
+			Escribir "¿Cuantos lotes desea registrar?"
+			Leer num
+			Mientras num <= 0 Hacer
+				Escribir "Cantidad invalida. Ingrese otra cantidad:"
+				Leer num
+			FinMientras
+			lotes = 1
+			Mientras lotes <= num Hacer
+				Escribir "LOTE ", lotes
+				Escribir "Ingrese el tipo de fruta"
+				Escribir "1. TIPO A - EXPORTACION"
+				Escribir "2. TIPO B - CONSUMO NACIONAL"
+				Leer tipo
+				Mientras tipo <> 1 Y tipo <> 2 Hacer
+					Escribir "Tipo invalido. Ingrese 1 o 2:"
+					Leer tipo
+				FinMientras
+				Escribir "Ingrese el peso del lote en kg:"
+				Leer peso
+				Mientras peso <= 0 Hacer
+					Escribir "Peso invalido. Ingrese un peso mayor a 0:"
+					Leer peso
+				FinMientras
+				Si tipo = 1 Entonces
+					valor = peso * 3500
+					Si peso > 500 Entonces
+						bono = valor * 0.05
+					SiNo
+						bono = 0
+					FinSi
+					retencion = 0
+					pago = valor + bono
+				SiNo
+					valor = peso * 2200
+					Si peso < 100 Entonces
+						retencion = valor * 0.03
+					SiNo
+						retencion = 0
+					FinSi
+					bono = 0
+					pago = valor - retencion
+				FinSi
+				totalKg = totalKg + peso
+				totalDinero = totalDinero + pago
+				Si peso > mayorPeso Entonces
+					mayorPeso = peso
+				FinSi
+				Escribir "Valor del lote: $", valor
+				Escribir "Bonificacion: $", bono
+				Escribir "Retencion: $", retencion
+				Escribir "Pago final: $", pago
+				lotes = lotes + 1
+			FinMientras
+		FinSi
+		Si frutas = 2 Entonces
+			Escribir "RESUMEN DEL CENTRO DE ACOPIO"
+			Escribir "Total de kg recibidos: ", totalKg
+			Escribir "Total de dinero pagado: $", totalDinero
+			Escribir "Lote con mayor peso: ", mayorPeso, " kg"
+		FinSi
+		Si frutas = 3 Entonces
+			Escribir "PROGRAMA FINALIZADO"
+		FinSi
+	Hasta Que frutas = 3
+FinAlgoritmo
