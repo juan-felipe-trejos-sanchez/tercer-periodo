@@ -1,0 +1,47 @@
+Algoritmo AgroInsumos
+Definir stock, opcion, sacos Como Entero
+Definir subtotal, descuento, total, caja Como Real
+caja = 0
+Escribir "Ingrese la cantidad de sacos:"
+Leer stock
+Mientras stock <= 0 Hacer
+Escribir "Cantidad invalida. Ingrese otra:"
+Leer stock
+FinMientras
+Repetir
+Escribir "1. Realizar venta"
+Escribir "2. Consultar stock"
+Escribir "3. Cerrar"
+Leer opcion
+Si opcion = 1 Entonces
+Escribir "Cuantos sacos desea comprar:"
+Leer sacos
+Mientras sacos <= 0 Hacer
+Escribir "Cantidad invalida:"
+Leer sacos
+FinMientras
+Si sacos > stock Entonces
+Escribir "No hay suficientes sacos"
+SiNo
+subtotal = sacos * 85000
+Si sacos >= 10 Entonces
+descuento = subtotal * 0.08
+SiNo
+descuento = 0
+FinSi
+total = subtotal - descuento
+stock = stock - sacos
+caja = caja + total
+Escribir "Venta realizada"
+Escribir "Total: $", total
+FinSi
+FinSi
+Si opcion = 2 Entonces
+Escribir "Sacos disponibles: ", stock
+FinSi
+Si opcion = 3 Entonces
+Escribir "Dinero recaudado: $", caja
+Escribir "Sacos restantes: ", stock
+FinSi
+Hasta Que opcion = 3
+FinAlgoritmo
